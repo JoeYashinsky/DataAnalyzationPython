@@ -7,7 +7,6 @@ bp = Blueprint('sample', __name__)
 def test():
     return "All good!"
 
-
 @bp.route('/sample')
 def index():
     message = "This text is coming from the 'sample.py' module, not the html file!"
