@@ -1,8 +1,9 @@
 import json
+from types import SimpleNamespace
 
+import requests
 from flask import Flask, jsonify, request, redirect, flash, render_template, url_for, Blueprint
-import json
-from datatracker.api_data import games
+
 
 
 bp = Blueprint('sample', __name__)
@@ -11,6 +12,13 @@ bp = Blueprint('sample', __name__)
 @bp.route('/test')
 def test():
     print("Hi World")
+
+
+@bp.route('/init', methods=['GET'])
+def get_games():
+    response = requests.get('https://api.dccresource.com/api/games')
+    games = json.loads(response.content, object_hook=lambda d: SimpleNamespace(**d))
+    return render_template('sample/init.html', games=games[0])
 
 
 @bp.route('/sample')
