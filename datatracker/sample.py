@@ -17,8 +17,9 @@ def test():
 @bp.route('/init', methods=['GET'])
 def get_games():
     response = requests.get('https://api.dccresource.com/api/games')
-    games = json.loads(response.content, object_hook=lambda d: SimpleNamespace(**d))
-    return render_template('sample/init.html', games=games[0])
+    #games = json.loads(response.content, object_hook=lambda d: SimpleNamespace(**d))
+    games = response.json()
+    return render_template('sample/init.html', games=games[0]['name'])
 
 
 @bp.route('/sample')

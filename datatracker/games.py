@@ -1,5 +1,3 @@
-import json
-
 from flask import Flask, jsonify, request, redirect, flash, render_template, url_for, Blueprint
 import requests
 import json
@@ -12,12 +10,7 @@ bp = Blueprint('our_views', __name__)
 def get_games():
     response = requests.get('https://api.dccresource.com/api/games')
     games = json.loads(response.content, object_hook=lambda d: SimpleNamespace(**d))
-    return games[0]
-
-
-@bp.route('/test')
-def test():
-    print("Hi World")
-
+    games = json.load()
+    return render_template()
 
 
