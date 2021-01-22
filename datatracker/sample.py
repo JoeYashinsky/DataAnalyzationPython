@@ -10,8 +10,7 @@ bp = Blueprint('sample', __name__)
 
 @bp.route('/test')
 def test():
-    with open('games.txt', "w") as json_file:
-        json.dump(games, json_file, indent=4, sort_keys=True)
+    print("Hi World")
 
 
 @bp.route('/sample')
