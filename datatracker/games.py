@@ -8,14 +8,16 @@ bp = Blueprint('our_views', __name__)
 
 @bp.route('/init', methods=['GET'])
 def get_games():
+    list_games = []
     response = requests.get('https://api.dccresource.com/api/games')
-    games = json.loads(response.content, object_hook=lambda d: SimpleNamespace(**d))
-    return games[0]
+    games = response.json()
+
+    for game in games:
+        if game["year"] == 2013:
+            list_games.append(game)
+    return render_template('our_views/init.html', list_games=list_games, response=response)
 
 
-@bp.route('/test')
-def test():
-    print("Hi World")
 
 
 
