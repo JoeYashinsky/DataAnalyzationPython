@@ -17,5 +17,5 @@ class Lists:
 
     @staticmethod
     def get_details(self):
-        print(self.api_data[1])
+        print(self.api_data.game[1].name)
 

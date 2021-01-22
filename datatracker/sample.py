@@ -1,11 +1,18 @@
+import json
+
 from flask import Flask, jsonify, request, redirect, flash, render_template, url_for, Blueprint
+import json
+from datatracker.api_data import games
+
 
 bp = Blueprint('sample', __name__)
 
 
 @bp.route('/test')
 def test():
-    return "All good!"
+    with open('games.txt', "w") as json_file:
+        json.dump(games, json_file, indent=4, sort_keys=True)
+
 
 
 @bp.route('/sample')
@@ -33,4 +40,5 @@ def other_example():
 
     else:
         return render_template('sample/postform.html', page_title="PostForm from Module Function")
+
 
