@@ -1,7 +1,7 @@
 import json
 from types import SimpleNamespace
 
-import requests
+
 from flask import Flask, jsonify, request, redirect, flash, render_template, url_for, Blueprint
 
 
