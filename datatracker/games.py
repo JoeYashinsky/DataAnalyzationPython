@@ -1,16 +1,14 @@
-
 from flask import Flask, jsonify, request, redirect, flash, render_template, url_for, Blueprint
 
 import requests
 
 import json
 
-
 bp = Blueprint('our_views', __name__)
 
 
 @bp.route('/init', methods=['GET'])
-def get_global_sales():
+def get_games():
     list_games = []
     response = requests.get('https://api.dccresource.com/api/games')
     games = response.json()

@@ -6,20 +6,33 @@
 
 {% block content %}
 
-<strong>{{ list_games }}</strong>
+<div>
+    <table>
+        <thead class="table-style">
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Platform</th>
+            <th>Year</th>
+            <th>Genre</th>
+            <th>Publisher</th>
+            <th>Global Sales</th>
+        </thead>
+        <tbody>
+        {% for game in list_games %}
+            <tr>
+                <td width="5%">{{game["rank"]}}</td>
+                <td width="30%">{{game["name"]}}</td>
+                <td width="8%">{{game["platform"]}}</td>
+                <td width="8%">{{game["year"]}}</td>
+                <td width="8%">{{game["genre"]}}</td>
+                <td width="25%">{{game["publisher"]}}</td>
+                <td width="8%">{{game["globalSales"]}}</td>
+            </tr>
+{% endfor %}
+        </tbody>
 
-
-<table>
-    <thead>
-        <tr>
-            <th>
-
-            </th>
-        </tr>
-    </thead>
-</table>
-
-
+    </table>
+</div>
 
 
 

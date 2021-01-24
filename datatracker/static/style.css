@@ -1,3 +1,14 @@
+.table-style {
+    table-layout: fixed
+    margin: 30px 15% 35px 15%;
+    width: 70%;
+    border-radius: 7px;
+    border-style: outset;
+    border-width: 3px;
+    padding: 15px;
+
+}
+
 @import url("https://fonts.googleapis.com/css?family=Neucha|Cabin+Sketch&display=swap");
 :root {
   --blue: #007bff;
@@ -29,6 +40,7 @@
   --font-family-sans-serif: Neucha, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
+
 
 *,
 *::before,
