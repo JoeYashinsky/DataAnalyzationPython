@@ -1,3 +1,4 @@
+
 from flask import Flask, jsonify, request, redirect, flash, render_template, url_for, Blueprint
 
 import requests
@@ -15,10 +16,11 @@ def get_global_sales():
     games = response.json()
 
     for game in games:
-        if game['year'] is not None:
-            if game["year"] >= 2013:
-                list_games.append(game)
-    return render_template('our_views/init.html', list_games=list_games, response=response)
+        if game_year = game['year']
+            if game_year is not None:
+                if game_year >= 2013:
+                    list_games.append(game)
 
+    return render_template('our_views/init.html', list_games=list_games, response=response)
 
 
