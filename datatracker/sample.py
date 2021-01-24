@@ -17,10 +17,14 @@ def test():
 @bp.route('/init', methods=['GET'])
 def get_games():
     response = requests.get('https://api.dccresource.com/api/games')
-    #games = json.loads(response.content, object_hook=lambda d: SimpleNamespace(**d))
+    games = json.loads(response.content, object_hook=lambda d: SimpleNamespace(**d))
+    #games = response.json()
+    #wiisports = games[0]
+    #return render_template('sample/init.html', games=games[0])
     games = response.json()
-    return render_template('sample/init.html', games=games[0]['name'])
-
+    first_game = games[0]
+    wii_sports = json.loads(first_game.content, object_hook=lambda d: SimpleNamespace(**d))
+    return render_template('sample/init.html', wii_sports=wii_sports, response=response)
 
 @bp.route('/sample')
 def index():

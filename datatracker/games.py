@@ -9,8 +9,9 @@ bp = Blueprint('our_views', __name__)
 @bp.route('/init', methods=['GET'])
 def get_games():
     response = requests.get('https://api.dccresource.com/api/games')
-    games = json.loads(response.content, object_hook=lambda d: SimpleNamespace(**d))
     games = json.load()
-    return render_template()
+    first_game = games[0]
+    wii_sports = json.loads(first_game.content, object_hook=lambda d: SimpleNamespace(**d))
+    return render_template('/games.py', wii_sports=wii_sports)
 
 
