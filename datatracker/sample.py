@@ -1,9 +1,8 @@
 import json
 from types import SimpleNamespace
 
-import requests
-from flask import Flask, jsonify, request, redirect, flash, render_template, url_for, Blueprint
 
+from flask import Flask, jsonify, request, redirect, flash, render_template, url_for, Blueprint
 
 
 bp = Blueprint('sample', __name__)
@@ -14,17 +13,7 @@ def test():
     print("Hi World")
 
 
-@bp.route('/init', methods=['GET'])
-def get_games():
-    response = requests.get('https://api.dccresource.com/api/games')
-    games = json.loads(response.content, object_hook=lambda d: SimpleNamespace(**d))
-    #games = response.json()
-    #wiisports = games[0]
-    #return render_template('sample/init.html', games=games[0])
-    games = response.json()
-    first_game = games[0]
-    wii_sports = json.loads(first_game.content, object_hook=lambda d: SimpleNamespace(**d))
-    return render_template('sample/init.html', wii_sports=wii_sports, response=response)
+
 
 @bp.route('/sample')
 def index():

@@ -19,6 +19,10 @@ def create_app():
     app.register_blueprint(sample.bp)
     # app.add_url_rule('/', endpoint='index')
 
+    from . import games
+    app.register_blueprint(games.bp)
+    # app.add_url_rule('/', endpoint='init')
+
     @app.route('/hello')
     def hello():
         return 'Hello, World!'

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 style="text-align: center">{% block title %} Sample Index {% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+
+<strong>{{ list_games }}</strong>
+
+<td>
+    <tr>
+        <th>
+
+        </th>
+    </tr>
+</td>
+
+
+
+
+
+
+
+
+<a href="{{ url_for('sample.other_example') }}"> Next Page </a>
+{% endblock %}
