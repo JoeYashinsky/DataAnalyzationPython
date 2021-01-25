@@ -6,6 +6,12 @@
 
 {% block content %}
 
+<div class="section search-section" >
+    <form method="post">
+        <input name="title" id="title" value="{{ request.form['title'] }}" required>
+        <input type="submit" value="Search">
+    </form>
+</div>
 
 <div>
     <table>
@@ -43,3 +49,4 @@
 
 
 <a href="{{ url_for('sample.other_example') }}"> Next Page </a>
+{% endblock %}
