@@ -1,11 +1,17 @@
 {% extends 'base.html' %}
 
 {% block header %}
-<h1 style="text-align: center">{% block title %} List of Games from 2013 and UP {% endblock %}</h1>
+<h1 style="text-align: center">{% block title %} Search for a Game {% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
+<div class="section search-section" >
+    <form id="search-field">
 
+        <input type="text" id="" style="display: inset-block; margin-right:5px;"/>
+        <button class="btn" type="submit">Search Game</button>
+    </form>
+</div>
 <div>
     <table>
         <thead class="table-style">
@@ -15,18 +21,24 @@
             <th>Year</th>
             <th>Genre</th>
             <th>Publisher</th>
+            <th>North America Sales</th>
+            <th>Europe Sales</th>
+            <th>Japan Sales</th>
             <th>Global Sales</th>
         </thead>
         <tbody>
-        {% for game in list_games %}
+        {% for game in data_games %}
             <tr>
                 <td width="5%">{{game["rank"]}}</td>
-                <td width="30%">{{game["name"]}}</td>
+                <td width="28%">{{game["name"]}}</td>
                 <td width="8%">{{game["platform"]}}</td>
-                <td width="8%">{{game["year"]}}</td>
+                <td width="5%">{{game["year"]}}</td>
                 <td width="8%">{{game["genre"]}}</td>
                 <td width="25%">{{game["publisher"]}}</td>
-                <td width="8%">{{game["globalSales"]}}</td>
+                <td width="5%">{{game["naSales"]}}</td>
+                <td width="5%">{{game["euSales"]}}</td>
+                <td width="5%">{{game["jpSales"]}}</td>
+                <td width="5%">{{game["globalSales"]}}</td>
             </tr>
 {% endfor %}
         </tbody>

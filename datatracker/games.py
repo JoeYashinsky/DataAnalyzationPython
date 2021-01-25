@@ -22,12 +22,33 @@ def get_games():
     return render_template('our_views/init.html', list_games=list_games, response=response)
 
 
+@bp.route('/globalSales', methods=['GET'])
+def global_sales():
+    list_games = []
+    response = requests.get('https://api.dccresource.com/api/games')
+    games = response.json()
+
+    for game in games:
+        game_year = game['year']
+        if game_year is not None:
+            if game_year >= 2013:
+                list_games.append(game)
+
+    platform_values = [sub['platform'] for sub in list_games]
+    global_values = [sub['globalSales'] for sub in list_games]
+
+    return render_template('our_views/globalSales.html', list_games=list_games, platform_values=platform_values, global_values=global_values, response=response)
+
+
 @bp.route('/namedgames', methods=['GET'])
 def get_games_by_name():
     game_names = []
     response = requests.get('https://api.dccresource.com/api/games')
     games = response.json()
+
     for game in games:
         game_name = game['name']
-        game_names.append(game_name)
+        if game_name is not None:
+            game_names.append(game_name)
+
     return render_template('our_views/namedgames.html', game_names=game_names, response=response)
