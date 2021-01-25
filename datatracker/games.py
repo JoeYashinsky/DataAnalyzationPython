@@ -10,6 +10,7 @@ bp = Blueprint('our_views', __name__)
 @bp.route('/init', methods=['GET'])
 def get_games():
     list_games = []
+    list_years = []
     response = requests.get('https://api.dccresource.com/api/games')
     games = response.json()
 
