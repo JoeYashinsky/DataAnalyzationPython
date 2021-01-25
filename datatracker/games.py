@@ -55,20 +55,23 @@ def global_sales():
                            list_platforms=list_platforms, global_values=global_values, response=response)
 
 
-@bp.route('/namedGames', methods=['GET'])
+@bp.route('/namedGames', methods=('GET', 'POST'))
 def search_for_game():
     response = requests.get('https://api.dccresource.com/api/games')
     games = response.json()
     found_game = []
-    # searched_game = input()
-    searched_game = "LittleBigPlanet"
+
+    if request.method == 'POST':
+        searched_game = request.form['title']
+        error = None
 
     for game in games:
         if game is not None:
             if game['name'] == searched_game:
                 found_game.append(game)
 
-    return render_template('our_views/namedGames.html', found_game=found_game, response=response)
+    return render_template('our_views/namedGames.html', found_game=found_game, searched_game=searched_game,
+                           response=response)
 
 
 #@bp.route('/init', methods=['GET'])
