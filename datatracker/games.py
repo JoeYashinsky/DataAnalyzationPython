@@ -1,7 +1,7 @@
+from collections import defaultdict
+from types import SimpleNamespace
 from flask import Flask, jsonify, request, redirect, flash, render_template, url_for, Blueprint
-
 import requests
-
 import json
 
 bp = Blueprint('our_views', __name__)
@@ -27,6 +27,7 @@ def get_games():
 def global_sales():
     list_games = []
     list_platforms = []
+    global_values = defaultdict(int)
     response = requests.get('https://api.dccresource.com/api/games')
     games = response.json()
 
@@ -42,10 +43,16 @@ def global_sales():
             if platform not in list_platforms:
                 list_platforms.append(platform)
 
-    global_values = [sub['globalSales'] for sub in list_games]
+    global_values = dict.fromkeys(list_platforms, 0)
 
-    return render_template('our_views/globalSales.html', list_games=list_games, list_platforms=list_platforms,
-                           global_values=global_values, response=response)
+    for game in games:
+        if game['platform'] == global_values.keys():
+            global_values.values += game['globalSales']
+
+    #global_values = [sub['globalSales'] for sub in list_games]
+
+    return render_template('our_views/globalSales.html', list_games=list_games,
+                           list_platforms=list_platforms, global_values=global_values, response=response)
 
 
 @bp.route('/namedGames', methods=['GET'])
@@ -53,7 +60,7 @@ def search_for_game():
     response = requests.get('https://api.dccresource.com/api/games')
     games = response.json()
     found_game = []
-    #searched_game = input()
+    # searched_game = input()
     searched_game = "LittleBigPlanet"
 
     for game in games:
@@ -64,15 +71,15 @@ def search_for_game():
     return render_template('our_views/namedGames.html', found_game=found_game, response=response)
 
 
-@bp.route('/init', methods=['GET'])
-def copies_sold():
-    response = requests.get('https://api.dccresource.com/api/games')
-    games = response.json()['items']
+#@bp.route('/init', methods=['GET'])
+#def copies_sold():
+ #   response = requests.get('https://api.dccresource.com/api/games')
+  #  games = response.json()['items']
 
-    for game in games:
-        return game['platform']
+   # for game in games:
+    #    return game['platform']
 
-    copies = copies_sold()
-    games_sold = [copy for copy in copies if copy['platform'] is not None and copy['globalSales'] is not None]
+    #copies = copies_sold()
+    #games_sold = [copy for copy in copies if copy['platform'] is not None and copy['globalSales'] is not None]
 
-    return render_template('our_views/init.html', response=response)
+    #return render_template('our_views/init.html', response=response)

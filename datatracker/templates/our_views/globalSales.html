@@ -11,22 +11,20 @@
 <script>
 var ctx = document.getElementById('myChart');
 var myChart = new Chart(ctx, {
-    type: 'bar',
+    type: 'line',
     data: {
-        labels: {{ list_platforms }}
+        labels:
         datasets: [{
-            label: {{ chart_name }}
-            {% for game in list_platforms %}
-            data: {{ game['globalSale'] }},
-            {% endfor %}
+            label: 
+            data:
             options: {
-                scales: {
-                yAxes: [{
-                ticks: {
-                beginAtZero: true
-                }
+        scales: {
+            yAxes: [{
+                stacked: true
             }]
         }
+
+
     }
 });
 </script>
