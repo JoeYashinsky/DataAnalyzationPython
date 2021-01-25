@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 style="text-align: center">{% block title %} List of Games from 2013 and UP {% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+
+
+<canvas id="myChart" width="400" height="400"></canvas>
+<script>
+var ctx = document.getElementById('myChart');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: {{ list_platforms }}
+        datasets: [{
+            label: {{ chart_name }}
+            data: {{ global_values }},
+
+            options: {
+                scales: {
+                yAxes: [{
+                ticks: {
+                beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+
+
+
+<a href="{{ url_for('sample.other_example') }}"> Next Page </a>
+{% endblock %}
