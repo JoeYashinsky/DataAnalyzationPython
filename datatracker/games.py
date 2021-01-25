@@ -10,6 +10,7 @@ bp = Blueprint('our_views', __name__)
 @bp.route('/init', methods=['GET'])
 def get_games():
     list_games = []
+    list_years = []
     response = requests.get('https://api.dccresource.com/api/games')
     games = response.json()
 
@@ -58,7 +59,7 @@ def search_for_game():
     for game in games:
         if game is not None:
             if game['name'] == searched_game:
-                found_game = game
+                found_game.append(game)
 
     return render_template('our_views/namedGames.html', found_game=found_game, response=response)
 

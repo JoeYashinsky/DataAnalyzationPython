@@ -16,8 +16,9 @@ var myChart = new Chart(ctx, {
         labels: {{ list_platforms }}
         datasets: [{
             label: {{ chart_name }}
-            data: {{ global_values }},
-
+            {% for game in list_platforms %}
+            data: {{ game['globalSale'] }},
+            {% endfor %}
             options: {
                 scales: {
                 yAxes: [{
