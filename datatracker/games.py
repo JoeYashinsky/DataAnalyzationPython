@@ -43,21 +43,24 @@ def global_sales():
 
     global_values = [sub['globalSales'] for sub in list_games]
 
-    return render_template('our_views/globalSales.html', list_games=list_games, list_platforms=list_platforms, global_values=global_values, response=response)
+    return render_template('our_views/globalSales.html', list_games=list_games, list_platforms=list_platforms,
+                           global_values=global_values, response=response)
 
 
-@bp.route('/namedgames', methods=['GET'])
-def get_games_by_name():
-    game_names = []
+@bp.route('/namedGames', methods=['GET'])
+def search_for_game():
     response = requests.get('https://api.dccresource.com/api/games')
     games = response.json()
+    found_game = []
+    #searched_game = input()
+    searched_game = "LittleBigPlanet"
 
     for game in games:
-        game_name = game['name']
-        if game_name is not None:
-            game_names.append(game_name)
+        if game is not None:
+            if game['name'] == searched_game:
+                found_game = game
 
-    return render_template('our_views/namedgames.html', game_names=game_names, response=response)
+    return render_template('our_views/namedGames.html', found_game=found_game, response=response)
 
 
 @bp.route('/init', methods=['GET'])
