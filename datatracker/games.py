@@ -59,7 +59,7 @@ def search_for_game():
     for game in games:
         if game is not None:
             if game['name'] == searched_game:
-                found_game = game
+                found_game.append(game)
 
     return render_template('our_views/namedGames.html', found_game=found_game, response=response)
 
