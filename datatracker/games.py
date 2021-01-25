@@ -35,13 +35,11 @@ def global_sales():
             if game_year >= 2013:
                 list_games.append(game)
 
-    #platform_values = [sub['platform'] for sub in list_games]
     for game in list_games:
         platform = game['platform']
         if platform is not None:
             if platform not in list_platforms:
                 list_platforms.append(platform)
-
 
     global_values = [sub['globalSales'] for sub in list_games]
 
