@@ -23,8 +23,8 @@ def create_app():
     app.register_blueprint(games.bp)
     # app.add_url_rule('/', endpoint='init')
 
-    @app.route('/hello')
+    @app.route('/')
     def hello():
-        return 'Hello, World!'
+        return "hello world"
 
     return app
