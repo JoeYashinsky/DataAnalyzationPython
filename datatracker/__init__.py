@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask
+from flask import Flask, render_template
 
 
 def create_app():
@@ -25,6 +25,7 @@ def create_app():
 
     @app.route('/')
     def hello():
-        return "hello world"
+
+        return render_template('our_views/init.html')
 
     return app
