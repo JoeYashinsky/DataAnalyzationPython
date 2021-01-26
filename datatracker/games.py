@@ -89,6 +89,7 @@ def na_sales_games():
 @bp.route('/namedGames', methods=('GET', 'POST'))
 def search_for_game():
     response = requests.get('https://api.dccresource.com/api/games')
+    searched_game = ''
     games = response.json()
     list_platforms = []
     found_game = []
