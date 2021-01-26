@@ -1,7 +1,10 @@
+import collections
+import operator
+import functools
+from collections import defaultdict
+from types import SimpleNamespace
 from flask import Flask, jsonify, request, redirect, flash, render_template, url_for, Blueprint
-
 import requests
-
 import json
 
 bp = Blueprint('our_views', __name__)
@@ -29,6 +32,7 @@ def global_sales():
     list_platforms = []
     response = requests.get('https://api.dccresource.com/api/games')
     games = response.json()
+    print(games)
 
     for game in games:
         game_year = game['year']
@@ -43,13 +47,17 @@ def global_sales():
                 list_platforms.append(platform)
 
     global_values = dict.fromkeys(list_platforms, 0)
+    print(global_values)
+
     for game in games:
+
         for item in global_values:
             if game['platform'] == item:
                 global_values[item] += game['globalSales']
 
-    return render_template('our_views/globalSales.html', list_games=list_games, list_platforms=list_platforms,
-                           global_values=global_values, response=response)
+    return render_template('our_views/globalSales.html', list_games=list_games,
+                           list_platforms=list_platforms, global_values=global_values,
+                           response=response)
 
 
 # How many copies of each game per console were sold in North America?
@@ -84,7 +92,7 @@ def search_for_game():
     games = response.json()
     list_platforms = []
     found_game = []
-    searched_game = ""
+
     if request.method == 'POST':
         searched_game = request.form['title']
         error = None
@@ -115,17 +123,3 @@ def search_for_game():
 
     return render_template('our_views/namedGames.html', global_values=global_values, found_game=found_game,
                            searched_game=searched_game, list_platforms=list_platforms, response=response)
-
-
-@bp.route('/init', methods=['GET'])
-def copies_sold():
-    response = requests.get('https://api.dccresource.com/api/games')
-    games = response.json()['items']
-
-    for game in games:
-        return game['platform']
-
-    copies = copies_sold()
-    games_sold = [copy for copy in copies if copy['platform'] is not None and copy['globalSales'] is not None]
-
-    return render_template('our_views/init.html', response=response)

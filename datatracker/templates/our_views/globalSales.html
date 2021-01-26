@@ -6,12 +6,8 @@
 
 {% block content %}
 
-<div>
-    <canvas id="myChart" class="text-center"></canvas>
-    <div>
-        <a href="{{ url_for('sample.other_example') }}"> Next Page </a>
-    </div>
-</div>
+
+<canvas id="myChart" width="400" height="400"></canvas>
 <script>
 let platforms = []
 let global_sales = []
@@ -23,7 +19,7 @@ platforms.push("{{ console }}");
 {% endfor %}
 var ctx = document.getElementById('myChart');
 var myChart = new Chart(ctx, {
-    type: 'bar',
+    type: 'line',
     data: {
         labels:  platforms, 
         datasets: [{
@@ -56,9 +52,13 @@ var myChart = new Chart(ctx, {
                 }
             }]
         }
+
+
     }
 });
 </script>
+
+
+
+<a href="{{ url_for('sample.other_example') }}"> Next Page </a>
 {% endblock %}
-
-
