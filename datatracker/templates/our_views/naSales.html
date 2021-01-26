@@ -32,14 +32,18 @@
     </div>
   </div>
 </nav>
+
+<div>
 <h1 style="text-align: center">{% block title %} North American Sales {% endblock %}</h1>
+<h6 style="text-align: center"> Per Console Since 1980 </h6>
 {% endblock %}
+</div>
 
 {% block content %}
     <div>
         <canvas id="myChart" class="text-center"></canvas>
     </div>
-    <script>
+<script>
 let platforms = []
 let global_sales = []
 {% for values in global_values %}
@@ -54,7 +58,7 @@ var myChart = new Chart(ctx, {
     data: {
         labels:  platforms,
         datasets: [{
-            label: "North American Video Game Sales per Console Since 1980",
+            label: "",
             data: global_sales,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -112,12 +116,22 @@ var myChart = new Chart(ctx, {
         }]
     },
     options: {
+        legend: { display: false },
         scales: {
             yAxes: [{
-                scaleLabel: {
-                display: true,
-                labelString: 'Game Consoles'
-                },
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Game Consoles'
+                    },
+                 ticks: {
+                    beginAtZero: true
+                    }
+                    }],
+            xAxes: [{
+                    scaleLabel: {
+                    display: true,
+                    labelString: 'Sales in Millions'
+                    },
                 ticks: {
                     beginAtZero: true
                 }
