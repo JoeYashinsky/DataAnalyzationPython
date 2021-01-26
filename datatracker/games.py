@@ -30,10 +30,8 @@ def get_games():
 def global_sales():
     list_games = []
     list_platforms = []
-    global_val = defaultdict(int)
     response = requests.get('https://api.dccresource.com/api/games')
     games = response.json()
-    games_dct = response.content
     print(games)
 
     for game in games:
@@ -51,22 +49,11 @@ def global_sales():
     global_values = dict.fromkeys(list_platforms, 0)
     print(global_values)
 
-    #get global sales from the api (games)
-    #iterate thru dataset
-    #if comparison == platform, then add global sales to the value of global_values
-
     for game in games:
-        global_stuff = 0
-        for key in global_values:
-            if game['platform'] == global_values[key]:
-                global_values[key] += game['globalSales']
-                global_values.update(global_stuff)
 
-
-    #for game in games:
-     #   for key in global_values:
-      #      if game['platform'] in global_values.keys():
-       #         global_values[key] += game['globalSales']
+        for item in global_values:
+            if game['platform'] == item:
+                global_values[item] += game['globalSales']
 
     return render_template('our_views/globalSales.html', list_games=list_games,
                            list_platforms=list_platforms, global_values=global_values,

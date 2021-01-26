@@ -11,8 +11,8 @@
 <script>
 let platforms = []
 let global_sales = []
-{% for value in global_values %}
-global_sales.push({{ global_values[value] }});
+{% for values in global_values %}
+global_sales.push({{ global_values[values] }});
 {% endfor %}
 {% for console in list_platforms %}
 platforms.push("{{ console }}");
@@ -21,7 +21,7 @@ var ctx = document.getElementById('myChart');
 var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels:  platforms,
+        labels:  platforms, 
         datasets: [{
             label: "Global Sales Chart",
             data: global_sales,
