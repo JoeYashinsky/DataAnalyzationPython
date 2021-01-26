@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask
+from flask import Flask, render_template
 
 
 def create_app():
@@ -23,8 +23,8 @@ def create_app():
     app.register_blueprint(games.bp)
     # app.add_url_rule('/', endpoint='init')
 
-    @app.route('/hello')
+    @app.route('/')
     def hello():
-        return 'Hello, World!'
+        return render_template('our_views/init.html')
 
     return app
