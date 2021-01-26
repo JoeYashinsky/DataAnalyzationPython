@@ -25,7 +25,6 @@ def create_app():
 
     @app.route('/')
     def hello():
-
-        return render_template('our_views/init.html')
+        return render_template('our_views/index.html')
 
     return app

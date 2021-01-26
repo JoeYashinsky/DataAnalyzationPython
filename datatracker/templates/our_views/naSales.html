@@ -1,6 +1,37 @@
 {% extends 'base.html' %}
 
 {% block header %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">Erbium Data</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/globalSales">Global Sales</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/init">The Classics</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/naSales">North American</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/namedGames">Search by Title</a>
+      </li>
+    </ul>
+    <div class="form-inline my-2 my-lg-0">
+      <strong>ERBIUM</strong>
+    </div>
+  </div>
+</nav>
 <h1 style="text-align: center">{% block title %} North American Sales {% endblock %}</h1>
 {% endblock %}
 
@@ -105,7 +136,4 @@ var myChart = new Chart(ctx, {
     }
 });
 </script>
-
-
-<a href="{{ url_for('sample.other_example') }}"> Next Page </a>
 {% endblock %}
