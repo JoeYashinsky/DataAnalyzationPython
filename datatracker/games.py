@@ -44,9 +44,9 @@ def global_sales():
 
     global_values = dict.fromkeys(list_platforms, 0)
     for game in games:
-        for value in global_values:
-            if game['platform'] == global_values.keys():
-                value += game['globalSales']
+        for item in global_values:
+            if game['platform'] == item:
+                global_values[item] += game['globalSales']
 
     return render_template('our_views/globalSales.html', list_games=list_games, list_platforms=list_platforms,
                            global_values=global_values, response=response)
