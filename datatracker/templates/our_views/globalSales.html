@@ -37,8 +37,9 @@
 
 {% block content %}
 
-
-<canvas id="myChart" width="400" height="400"></canvas>
+<div>
+  <canvas id="myChart" width="400" height="400"></canvas>
+</div>
 <script>
 let platforms = []
 let global_sales = []
@@ -88,8 +89,4 @@ var myChart = new Chart(ctx, {
     }
 });
 </script>
-
-
-
-<a href="{{ url_for('sample.other_example') }}"> Next Page </a>
 {% endblock %}

@@ -45,7 +45,7 @@
 </div>
 
 <div>
-    <table>
+    <table class="table-hover">
         <thead class="table-style">
             <th>Rank</th>
             <th>Name</th>
@@ -60,7 +60,7 @@
         </thead>
         <tbody>
         {% for game in found_game %}
-            <tr>
+            <tr class="table-primary">
                 <td width="5%">{{game["rank"]}}</td>
                 <td width="28%">{{game["name"]}}</td>
                 <td width="8%">{{game["platform"]}}</td>
@@ -72,7 +72,7 @@
                 <td width="5%">{{game["jpSales"]}}</td>
                 <td width="5%">{{game["globalSales"]}}</td>
             </tr>
-{% endfor %}
+        {% endfor %}
         </tbody>
 
     </table>
@@ -127,7 +127,4 @@ var myChart = new Chart(ctx, {
 });
 </script>
 </div>
-
-
-<a href="{{ url_for('sample.other_example') }}"> Next Page </a>
 {% endblock %}
