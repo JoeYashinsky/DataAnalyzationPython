@@ -1,50 +1,10 @@
 {% extends 'base.html' %}
 
 {% block header %}
-<h1 style="text-align: center">{% block title %} Game Details {% endblock %}</h1>
+<h1 style="text-align: center">{% block title %} North American Sales {% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
-
-<div class="section search-section" >
-    <form method="post">
-        <input name="title" id="title" value="{{ request.form['title'] }}" required>
-        <input type="submit" value="Search">
-    </form>
-</div>
-
-<div>
-    <table>
-        <thead class="table-style">
-            <th>Rank</th>
-            <th>Name</th>
-            <th>Platform</th>
-            <th>Year</th>
-            <th>Genre</th>
-            <th>Publisher</th>
-            <th>North America Sales</th>
-            <th>Europe Sales</th>
-            <th>Japan Sales</th>
-            <th>Global Sales</th>
-        </thead>
-        <tbody>
-        {% for game in found_game %}
-            <tr>
-                <td width="5%">{{game["rank"]}}</td>
-                <td width="28%">{{game["name"]}}</td>
-                <td width="8%">{{game["platform"]}}</td>
-                <td width="5%">{{game["year"]}}</td>
-                <td width="8%">{{game["genre"]}}</td>
-                <td width="25%">{{game["publisher"]}}</td>
-                <td width="5%">{{game["naSales"]}}</td>
-                <td width="5%">{{game["euSales"]}}</td>
-                <td width="5%">{{game["jpSales"]}}</td>
-                <td width="5%">{{game["globalSales"]}}</td>
-            </tr>
-{% endfor %}
-        </tbody>
-
-    </table>
     <div>
         <canvas id="myChart" class="text-center"></canvas>
     </div>
@@ -59,11 +19,11 @@ platforms.push("{{ console }}");
 {% endfor %}
 var ctx = document.getElementById('myChart');
 var myChart = new Chart(ctx, {
-    type: 'pie',
+    type: 'bar',
     data: {
         labels:  platforms,
         datasets: [{
-            label: "Global Sales Chart",
+            label: "North American Video Game Sales per Console",
             data: global_sales,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -95,7 +55,6 @@ var myChart = new Chart(ctx, {
     }
 });
 </script>
-</div>
 
 
 <a href="{{ url_for('sample.other_example') }}"> Next Page </a>
