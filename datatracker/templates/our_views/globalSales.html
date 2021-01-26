@@ -11,8 +11,8 @@
 <script>
 let platforms = []
 let global_sales = []
-{% for values in global_values %}
-global_sales.push("{{ values }}");
+{% for value in global_values %}
+global_sales.push({{ global_values[value] }});
 {% endfor %}
 {% for console in list_platforms %}
 platforms.push("{{ console }}");
