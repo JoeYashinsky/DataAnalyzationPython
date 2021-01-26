@@ -36,41 +36,45 @@
 {% endblock %}
 
 {% block content %}
-<div class="section search-section" >
-    <a href="/namedGames">Search by Title</a>
-    <a href="globalSales">Global Sales Chart</a>
-</div>
-<div>
-    <table>
-        <thead class="table-style">
-            <th>Rank</th>
-            <th>Name</th>
-            <th>Platform</th>
-            <th>Year</th>
-            <th>Genre</th>
-            <th>Publisher</th>
-            <th>North America Sales</th>
-            <th>Europe Sales</th>
-            <th>Japan Sales</th>
-            <th>Global Sales</th>
-        </thead>
-        <tbody>
-        {% for game in list_games %}
-            <tr>
-                <td width="5%">{{game["rank"]}}</td>
-                <td width="28%">{{game["name"]}}</td>
-                <td width="8%">{{game["platform"]}}</td>
-                <td width="5%">{{game["year"]}}</td>
-                <td width="8%">{{game["genre"]}}</td>
-                <td width="25%">{{game["publisher"]}}</td>
-                <td width="5%">{{game["naSales"]}}</td>
-                <td width="5%">{{game["euSales"]}}</td>
-                <td width="5%">{{game["jpSales"]}}</td>
-                <td width="5%">{{game["globalSales"]}}</td>
-            </tr>
-{% endfor %}
-        </tbody>
 
-    </table>
+
+<div>
+    <div class="section search-section">
+        <br>
+    </div>
+
+    <div>
+        <table class="table-hover">
+            <thead class="table-style">
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Platform</th>
+                <th>Year</th>
+                <th>Genre</th>
+                <th>Publisher</th>
+                <th>North America Sales</th>
+                <th>Europe Sales</th>
+                <th>Japan Sales</th>
+                <th>Global Sales</th>
+            </thead>
+            <tbody>
+            {% for game in list_games %}
+                <tr class="table-primary">
+                    <td width="5%">{{game["rank"]}}</td>
+                    <td width="28%">{{game["name"]}}</td>
+                    <td width="8%">{{game["platform"]}}</td>
+                    <td width="5%">{{game["year"]}}</td>
+                    <td width="8%">{{game["genre"]}}</td>
+                    <td width="25%">{{game["publisher"]}}</td>
+                    <td width="5%">{{game["naSales"]}}</td>
+                    <td width="5%">{{game["euSales"]}}</td>
+                    <td width="5%">{{game["jpSales"]}}</td>
+                    <td width="5%">{{game["globalSales"]}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
 </div>
 {% endblock %}
