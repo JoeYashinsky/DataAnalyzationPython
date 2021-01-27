@@ -35,8 +35,11 @@
     </div>
   </div>
 </nav>
-<h1 style="text-align: center">{% block title %} Game Details {% endblock %}</h1>
+<div>
+   <h1 style="text-align: center; padding-top: 15px; padding-bottom: 15px">{% block title %} Game Details {% endblock %}</h1>
 {% endblock %}
+</div>
+
 
 {% block content %}
 
@@ -44,23 +47,23 @@
 
 </div>
 
-<div>
-    <table class="table-hover">
-        <thead class="table-style">
+<div style="padding: 10px 10px">
+    <table class="table-hover" style="table-layout: fixed; width: 100%">
+        <thead class="table-style" style="text-align: center">
             <th>Rank</th>
             <th>Name</th>
             <th>Platform</th>
             <th>Year</th>
             <th>Genre</th>
             <th>Publisher</th>
-            <th>North America Sales</th>
-            <th>Europe Sales</th>
-            <th>Japan Sales</th>
+            <th title="North America Sales">NA Sales</th>
+            <th title="Europe Sales">EU Sales</th>
+            <th title="Japan Sales">JP Sales</th>
             <th>Global Sales</th>
         </thead>
         <tbody>
         {% for game in found_game %}
-            <tr class="table-primary">
+            <tr class="table-primary" style="text-align: center">
                 <td width="5%">{{game["rank"]}}</td>
                 <td width="28%">{{game["name"]}}</td>
                 <td width="8%">{{game["platform"]}}</td>
@@ -76,7 +79,7 @@
         </tbody>
 
     </table>
-    <div>
+    <div style="padding-top: 20px">
         <canvas id="myChart" class="text-center"></canvas>
     </div>
     <script>
@@ -102,7 +105,31 @@ var myChart = new Chart(ctx, {
                 'rgba(255, 206, 86, 0.2)',
                 'rgba(75, 192, 192, 0.2)',
                 'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 99, 132, 0.3)',
+                'rgba(54, 162, 235, 0.3)',
+                'rgba(255, 206, 86, 0.3)',
+                'rgba(75, 192, 192, 0.3)',
+                'rgba(153, 102, 255, 0.3)',
+                'rgba(255, 159, 64, 0.3)',
+                'rgba(255, 99, 132, 0.4)',
+                'rgba(54, 162, 235, 0.4)',
+                'rgba(255, 206, 86, 0.4)',
+                'rgba(75, 192, 192, 0.4)',
+                'rgba(153, 102, 255, 0.4)',
+                'rgba(255, 159, 64, 0.4)',
+                'rgba(255, 99, 132, 0.5)',
+                'rgba(54, 162, 235, 0.5)',
+                'rgba(255, 206, 86, 0.5)',
+                'rgba(75, 192, 192, 0.5)',
+                'rgba(153, 102, 255, 0.5)',
+                'rgba(255, 159, 64, 0.5)',
+                'rgba(255, 99, 132, 0.6)',
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(255, 206, 86, 0.6)',
+                'rgba(75, 192, 192, 0.6)',
+                'rgba(153, 102, 255, 0.6)',
+                'rgba(255, 159, 64, 0.6)'
             ],
             borderColor: [
                 'rgba(255, 99, 132, 1)',
@@ -110,19 +137,70 @@ var myChart = new Chart(ctx, {
                 'rgba(255, 206, 86, 1)',
                 'rgba(75, 192, 192, 1)',
                 'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
                 'rgba(255, 159, 64, 1)'
             ],
+            hoverBackgroundColor: [
+                'rgba(255, 99, 132, .7)',
+                'rgba(54, 162, 235, .7)',
+                'rgba(255, 206, 86, .7)',
+                'rgba(75, 192, 192, .7)',
+                'rgba(153, 102, 255, .7)',
+                'rgba(255, 159, 64, .7)',
+                'rgba(255, 99, 132, .8)',
+                'rgba(54, 162, 235, .8)',
+                'rgba(255, 206, 86, .8)',
+                'rgba(75, 192, 192, .8)',
+                'rgba(153, 102, 255, .8)',
+                'rgba(255, 159, 64, .8)',
+                'rgba(255, 99, 132, .9)',
+                'rgba(54, 162, 235, .9)',
+                'rgba(255, 206, 86, .9)',
+                'rgba(75, 192, 192, .9)',
+                'rgba(153, 102, 255, .9)',
+                'rgba(255, 159, 64, .9)',
+                'rgba(255, 99, 132, .9)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1.01)',
+                'rgba(54, 162, 235, 1.01)',
+                'rgba(255, 206, 86, 1.01)',
+                'rgba(75, 192, 192, 1.01)',
+                'rgba(153, 102, 255, 1.01)',
+                'rgba(255, 159, 64, 1.01)'
+            ],
             borderWidth: 1
+
         }]
     },
     options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
+
     }
 });
 </script>

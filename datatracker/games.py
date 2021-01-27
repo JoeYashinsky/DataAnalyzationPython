@@ -1,11 +1,9 @@
 import collections
-import operator
-import functools
-from collections import defaultdict
-from types import SimpleNamespace
+import math
 from flask import Flask, jsonify, request, redirect, flash, render_template, url_for, Blueprint
 import requests
 import json
+
 
 bp = Blueprint('our_views', __name__)
 
@@ -53,7 +51,7 @@ def global_sales():
 
         for item in global_values:
             if game['platform'] == item:
-                global_values[item] += game['globalSales']
+                global_values[item] += math.trunc(game['globalSales'])
 
     return render_template('our_views/globalSales.html', list_games=list_games,
                            list_platforms=list_platforms, global_values=global_values,
@@ -80,7 +78,7 @@ def na_sales_games():
     for game in games:
         for item in global_values:
             if game['platform'] == item:
-                global_values[item] += game['naSales']
+                global_values[item] += math.trunc(game['naSales'])
     return render_template('our_views/naSales.html', list_games=list_games, list_platforms=list_platforms,
                            global_values=global_values, response=response)
 
@@ -123,3 +121,9 @@ def search_for_game():
 
     return render_template('our_views/namedGames.html', global_values=global_values, found_game=found_game,
                            searched_game=searched_game, list_platforms=list_platforms, response=response)
+
+
+
+
+
+
