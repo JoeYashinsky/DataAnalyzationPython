@@ -32,17 +32,24 @@
     </div>
   </div>
 </nav>
+<<<<<<< HEAD
 <div  style="text-align: center; padding-top: 15px; padding-bottom: 15px">
   <h1>{% block title %} Where to Invest?{% endblock %}</h1>
   <h2>Video Game Console Performance 2013-Current</h2>
 </div>
 
+=======
+
+<div style="padding-top: 1.5%; padding-bottom: 1%">
+<h1 style="text-align: center">{% block title %} Where to Invest? Video Game Console Performance 2013-Current {% endblock %}</h1>
+<h5 style="text-align: center">Game Copies Sold Globally (millions)</h5>
+>>>>>>> 125c7189d2a2ce9782dc045bfaedf4dd954bd1f5
 {% endblock %}
 
 {% block content %}
 
 <div>
-  <canvas id="myChart" width="400" height="400"></canvas>
+  <canvas id="myChart" width="400" height="170"></canvas>
 </div>
 <script>
 let platforms = []
@@ -102,15 +109,15 @@ var myChart = new Chart(ctx, {
                     beginAtZero: true
                 }
             }],
-            xAxes: [{
-                    scaleLabel: {
-                    display: true,
-                    labelString: "Based on Copies Sold Globally (millions)",
-                    },
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
+          xAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: 'Copies Sold (millions)'
+              },
+            ticks: {
+                beginAtZero: true
+            }
+          }]
 
         }
     }
