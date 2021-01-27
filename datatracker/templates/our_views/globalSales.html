@@ -32,7 +32,7 @@
     </div>
   </div>
 </nav>
-<h1 style="text-align: center">{% block title %} List of Games from 2013 and UP {% endblock %}</h1>
+<h1 style="text-align: center">{% block title %} Where to Invest? Video Game Console Performance 2013-Current {% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
@@ -51,11 +51,11 @@ platforms.push("{{ console }}");
 {% endfor %}
 var ctx = document.getElementById('myChart');
 var myChart = new Chart(ctx, {
-    type: 'line',
+    type: 'horizontalBar',
     data: {
         labels:  platforms, 
         datasets: [{
-            label: "Global Sales Chart",
+            label: "Based on Copies Sold Globally (millions)",
             data: global_sales,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -79,14 +79,18 @@ var myChart = new Chart(ctx, {
     options: {
         scales: {
             yAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: 'Game Consoles'
+              },
                 ticks: {
                     beginAtZero: true
                 }
             }]
+
         }
-
-
     }
 });
+
 </script>
 {% endblock %}
