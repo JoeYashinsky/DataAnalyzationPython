@@ -30,7 +30,6 @@ def global_sales():
     list_platforms = []
     response = requests.get('https://api.dccresource.com/api/games')
     games = response.json()
-    print(games)
 
     for game in games:
         game_year = game['year']
@@ -45,7 +44,6 @@ def global_sales():
                 list_platforms.append(platform)
 
     global_values = dict.fromkeys(list_platforms, 0)
-    print(global_values)
 
     for game in games:
 
