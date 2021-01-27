@@ -35,8 +35,11 @@
     </div>
   </div>
 </nav>
-<h1 style="text-align: center">{% block title %} Game Details {% endblock %}</h1>
+<div>
+   <h1 style="text-align: center; padding-top: 15px; padding-bottom: 15px">{% block title %} Game Details {% endblock %}</h1>
 {% endblock %}
+</div>
+
 
 {% block content %}
 
@@ -44,23 +47,23 @@
 
 </div>
 
-<div>
-    <table class="table-hover">
-        <thead class="table-style">
+<div style="padding: 10px 10px">
+    <table class="table-hover" style="table-layout: fixed; width: 100%">
+        <thead class="table-style" style="text-align: center">
             <th>Rank</th>
             <th>Name</th>
             <th>Platform</th>
             <th>Year</th>
             <th>Genre</th>
             <th>Publisher</th>
-            <th>North America Sales</th>
-            <th>Europe Sales</th>
-            <th>Japan Sales</th>
+            <th title="North America Sales">NA Sales</th>
+            <th title="Europe Sales">EU Sales</th>
+            <th title="Japan Sales">JP Sales</th>
             <th>Global Sales</th>
         </thead>
         <tbody>
         {% for game in found_game %}
-            <tr class="table-primary">
+            <tr class="table-primary" style="text-align: center">
                 <td width="5%">{{game["rank"]}}</td>
                 <td width="28%">{{game["name"]}}</td>
                 <td width="8%">{{game["platform"]}}</td>
@@ -76,7 +79,7 @@
         </tbody>
 
     </table>
-    <div>
+    <div style="padding-top: 20px">
         <canvas id="myChart" class="text-center"></canvas>
     </div>
     <script>
@@ -104,7 +107,7 @@ var myChart = new Chart(ctx, {
                 'rgba(153, 102, 255, 0.2)',
                 'rgba(255, 159, 64, 0.2)'
             ],
-            borderColor: [
+            hoverBorderColor: [
                 'rgba(255, 99, 132, 1)',
                 'rgba(54, 162, 235, 1)',
                 'rgba(255, 206, 86, 1)',
@@ -113,16 +116,11 @@ var myChart = new Chart(ctx, {
                 'rgba(255, 159, 64, 1)'
             ],
             borderWidth: 1
+
         }]
     },
     options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
+
     }
 });
 </script>
