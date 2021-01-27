@@ -18,7 +18,7 @@ def get_games():
     for game in games:
         game_year = game['year']
         if game_year is not None:
-            if game_year >= 2013:
+            if game_year <= 2001:
                 list_games.append(game)
 
     return render_template('our_views/init.html', list_games=list_games, response=response)
