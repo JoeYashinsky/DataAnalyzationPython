@@ -122,3 +122,9 @@ def search_for_game():
 
     return render_template('our_views/namedGames.html', global_values=global_values, found_game=found_game,
                            searched_game=searched_game, list_platforms=list_platforms, response=response)
+
+
+
+
+
+
