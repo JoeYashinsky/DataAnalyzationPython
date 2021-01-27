@@ -81,8 +81,6 @@ def na_sales_games():
         for item in global_values:
             if game['platform'] == item:
                 global_values[item] += game['naSales']
-
-
     return render_template('our_views/naSales.html', list_games=list_games, list_platforms=list_platforms,
                            global_values=global_values, response=response)
 
