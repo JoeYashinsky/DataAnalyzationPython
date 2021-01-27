@@ -34,47 +34,40 @@
 </nav>
 <h1 style="text-align: center; padding-top: 20px; padding-bottom: 15px">{% block title %} The Classics {% endblock %}</h1>
 {% endblock %}
-
 {% block content %}
 
 
-<div>
-    <div class="section search-section">
-        <br>
-    </div>
+<div style="padding: 10px 10px">
+    <table class="table-hover" style="table-layout: fixed; width: 100%">
+        <thead class="table-style" style="text-align: center">
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Platform</th>
+            <th>Year</th>
+            <th>Genre</th>
+            <th>Publisher</th>
+            <th title="North America Sales">NA Sales</th>
+            <th title="Europe Sales">EU Sales</th>
+            <th title="Japan Sales">JP Sales</th>
+            <th>Global Sales</th>
+        </thead>
+        <tbody>
+        {% for game in list_games %}
+            <tr class="table-primary" style="text-align: center">
+                <td width="5%">{{game["rank"]}}</td>
+                <td width="28%">{{game["name"]}}</td>
+                <td width="8%">{{game["platform"]}}</td>
+                <td width="5%">{{game["year"]}}</td>
+                <td width="8%">{{game["genre"]}}</td>
+                <td width="25%">{{game["publisher"]}}</td>
+                <td width="5%">{{game["naSales"]}}</td>
+                <td width="5%">{{game["euSales"]}}</td>
+                <td width="5%">{{game["jpSales"]}}</td>
+                <td width="5%">{{game["globalSales"]}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
 
-    <div>
-        <table class="table-hover">
-            <thead class="table-style">
-                <th>Rank</th>
-                <th>Name</th>
-                <th>Platform</th>
-                <th>Year</th>
-                <th>Genre</th>
-                <th>Publisher</th>
-                <th>North America Sales</th>
-                <th>Europe Sales</th>
-                <th>Japan Sales</th>
-                <th>Global Sales</th>
-            </thead>
-            <tbody>
-            {% for game in list_games %}
-                <tr class="table-primary">
-                    <td width="5%">{{game["rank"]}}</td>
-                    <td width="28%">{{game["name"]}}</td>
-                    <td width="8%">{{game["platform"]}}</td>
-                    <td width="5%">{{game["year"]}}</td>
-                    <td width="8%">{{game["genre"]}}</td>
-                    <td width="25%">{{game["publisher"]}}</td>
-                    <td width="5%">{{game["naSales"]}}</td>
-                    <td width="5%">{{game["euSales"]}}</td>
-                    <td width="5%">{{game["jpSales"]}}</td>
-                    <td width="5%">{{game["globalSales"]}}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
+    </table>
 
-        </table>
-    </div>
-</div>
 {% endblock %}
