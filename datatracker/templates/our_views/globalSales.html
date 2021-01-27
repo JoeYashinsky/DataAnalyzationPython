@@ -32,7 +32,11 @@
     </div>
   </div>
 </nav>
-<h1 style="text-align: center">{% block title %} Where to Invest? Video Game Console Performance 2013-Current {% endblock %}</h1>
+<div  style="text-align: center; padding-top: 15px; padding-bottom: 15px">
+  <h1>{% block title %} Where to Invest?{% endblock %}</h1>
+  <h2>Video Game Console Performance 2013-Current</h2>
+</div>
+
 {% endblock %}
 
 {% block content %}
@@ -55,7 +59,7 @@ var myChart = new Chart(ctx, {
     data: {
         labels:  platforms, 
         datasets: [{
-            label: "Based on Copies Sold Globally (millions)",
+            label: "",
             data: global_sales,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -87,12 +91,22 @@ var myChart = new Chart(ctx, {
         }]
     },
     options: {
+      legend: { display: false },
         scales: {
             yAxes: [{
               scaleLabel: {
                 display: true,
                 labelString: 'Game Consoles'
               },
+                ticks: {
+                    beginAtZero: true
+                }
+            }],
+            xAxes: [{
+                    scaleLabel: {
+                    display: true,
+                    labelString: "Based on Copies Sold Globally (millions)",
+                    },
                 ticks: {
                     beginAtZero: true
                 }
