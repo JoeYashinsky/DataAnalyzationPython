@@ -32,13 +32,16 @@
     </div>
   </div>
 </nav>
+
+<div style="padding-top: 1.5%; padding-bottom: 1%">
 <h1 style="text-align: center">{% block title %} Where to Invest? Video Game Console Performance 2013-Current {% endblock %}</h1>
+<h5 style="text-align: center">Game Copies Sold Globally (millions)</h5>
 {% endblock %}
 
 {% block content %}
 
 <div>
-  <canvas id="myChart" width="400" height="400"></canvas>
+  <canvas id="myChart" width="400" height="170"></canvas>
 </div>
 <script>
 let platforms = []
@@ -55,7 +58,7 @@ var myChart = new Chart(ctx, {
     data: {
         labels:  platforms, 
         datasets: [{
-            label: "Based on Copies Sold Globally (millions)",
+            label: "",
             data: global_sales,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -96,7 +99,16 @@ var myChart = new Chart(ctx, {
                 ticks: {
                     beginAtZero: true
                 }
-            }]
+            }],
+          xAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: 'Copies Sold (millions)'
+              },
+            ticks: {
+                beginAtZero: true
+            }
+          }]
 
         }
     }
