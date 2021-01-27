@@ -32,7 +32,7 @@
     </div>
   </div>
 </nav>
-<h1 style="text-align: center">{% block title %} List of Games from 2013 and UP {% endblock %}</h1>
+<h1 style="text-align: center">{% block title %} Where to Invest? Video Game Console Performance 2013-Current {% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
@@ -51,11 +51,11 @@ platforms.push("{{ console }}");
 {% endfor %}
 var ctx = document.getElementById('myChart');
 var myChart = new Chart(ctx, {
-    type: 'line',
+    type: 'horizontalBar',
     data: {
         labels:  platforms, 
         datasets: [{
-            label: "Global Sales Chart",
+            label: "Based on Copies Sold Globally (millions)",
             data: global_sales,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -63,7 +63,12 @@ var myChart = new Chart(ctx, {
                 'rgba(255, 206, 86, 0.2)',
                 'rgba(75, 192, 192, 0.2)',
                 'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                'rgba(255, 0, 0, 0.3)',
+                'rgba(108, 165, 161, 0.6)',
+                'rgba(188, 209, 114, 0.4)',
+                'rgba(0, 255, 0, 0.6)',
+                'rgba(128, 0, 0, 0.6)',
+                'rgba(0, 0, 255, 0.5)'
             ],
             borderColor: [
                 'rgba(255, 99, 132, 1)',
@@ -71,7 +76,12 @@ var myChart = new Chart(ctx, {
                 'rgba(255, 206, 86, 1)',
                 'rgba(75, 192, 192, 1)',
                 'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                'rgba(255, 0, 0, 1)',
+                'rgba(108, 165, 161, 1)',
+                'rgba(188, 209, 114, 1)',
+                'rgba(0, 255, 0, 1)',
+                'rgba(128, 0, 0, 1)',
+                'rgba(0, 0, 255, 1)'
             ],
             borderWidth: 1
         }]
@@ -79,14 +89,18 @@ var myChart = new Chart(ctx, {
     options: {
         scales: {
             yAxes: [{
+              scaleLabel: {
+                display: true,
+                labelString: 'Game Consoles'
+              },
                 ticks: {
                     beginAtZero: true
                 }
             }]
+
         }
-
-
     }
 });
+
 </script>
 {% endblock %}
